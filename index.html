@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="eng">
+    <head>
     <meta charset="UTF-8">
     <title>Reservation Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -7,7 +8,7 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-</html>
+</head>
 
 <body>
     <div class="container">
@@ -16,6 +17,7 @@
           <h3>Don't miss out, reserve your tables now!</h3>
           <hr>
           <a href="/"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View Tables</button></a>
+          <a href="/"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span>Home</button></a>
         </div>
         <div class="row">
     
@@ -34,18 +36,18 @@
                   </div>
     
                   <div class="form-group">
-                    <label for="role">Phone Number</label>
-                    <input type="text" class="form-control" id="role">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" class="form-control" id="phone">
                   </div>
     
                   <div class="form-group">
-                    <label for="age">Email</label>
-                    <input type="text" class="form-control" id="age">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email">
                   </div>
     
                   <div class="form-group">
-                    <label for="force-points">Unique ID</label>
-                    <input type="text" class="form-control" id="force-points">
+                    <label for="uniqueID">Unique ID</label>
+                    <input type="text" class="form-control" id="uniqueID">
                   </div>
     
                 </form>
@@ -60,5 +62,23 @@
         </div>
       </div>
 
+<script type="text/javascript">
+    $("#add-btn").on("click", function(event) {
+      event.preventDefault();
+      var newReservation = {
+        name: $("#name").val().trim(),
+        phone: $("#phone").val().trim(),
+        email: $("#email").val().trim(),
+        uniqueID: $("#uniqueID").val().trim()
+      };
+
+      $.post("/api/reservation", newReservation)
+        .then(function(data) {
+          console.log("index.html", data);
+          alert("Adding reservation...");
+        });
+    });
+  </script>
 
 </body>
+</html>
