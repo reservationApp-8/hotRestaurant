@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/reservationApp-8/hotRestaurant/issues"
   },
-  "homepage": "https://github.com/reservationApp-8/hotRestaurant#readme"
+  "homepage": "https://github.com/reservationApp-8/hotRestaurant#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  }
 }

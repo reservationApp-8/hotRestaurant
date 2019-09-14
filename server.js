@@ -10,6 +10,9 @@ var PORT = process.env.PORT || 3000;
 
 // Application Variables 
 var MAX_TABLES = 5;
+var reservations = [];
+var waitlist = [];
+
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({
@@ -52,11 +55,11 @@ app.post("/api/reservations", function (req, res) {
 
     if (reservations.length < MAX_TABLES) {
         reservations.push(newReservation);
+        res.json(newReservation);
     } else {
         waitlist.push(newReservation);
     }
 
-    res.json(newReservation);
 });
 
 // Starts the server to begin listening
